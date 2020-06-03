@@ -42,8 +42,11 @@ func (session Session) request(endpoint string, query url.Values) ([]byte, error
 		return nil, err
 	}
 
+	dumpResp, _ := httputil.DumpResponse(resp, true)
+	fmt.Printf("%s", dumpResp)
+
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf(ResponceStatusCode[resp.StatusCode])
+			return nil, fmt.Errorf(ResponceStatusCode[resp.StatusCode])
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
