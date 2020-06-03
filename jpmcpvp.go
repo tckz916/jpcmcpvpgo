@@ -8,7 +8,7 @@ import (
 	"net/url"
 )
 
-var BaseURL string = "https://pvp-api.minecraft.jp/v1/"
+var baseURL string = "https://pvp-api.minecraft.jp/v1/"
 
 type Session struct {
 	client *http.Client
@@ -22,7 +22,7 @@ func New(token string) *Session {
 
 func (session Session) request(endpoint string, query url.Values) ([]byte, error) {
 
-	req, err := http.NewRequest("GET", BaseURL+endpoint+"?"+query.Encode(), nil)
+	req, err := http.NewRequest("GET", baseURL+endpoint+"?"+query.Encode(), nil)
 	req.Header.Set("Authorization", "Bearer "+session.token)
 
 	if err != nil {

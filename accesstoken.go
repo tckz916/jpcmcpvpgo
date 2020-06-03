@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-var TokenURL string = "https://minecraft.jp/oauth/token"
+var tokenURL string = "https://minecraft.jp/oauth/token"
 
 type TokenRequest struct {
 	GrantType    string `json:"grant_type"`
@@ -30,7 +30,7 @@ func GetAccessToken(client_id string, client_secret string) (client *ClientCrede
 		return nil, err
 	}
 
-	resp, err := http.Post(TokenURL, "application/json", bytes.NewBuffer(b))
+	resp, err := http.Post(tokenURL, "application/json", bytes.NewBuffer(b))
 
 	if err != nil {
 		return nil, err
