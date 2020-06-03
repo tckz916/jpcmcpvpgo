@@ -1,4 +1,4 @@
-package jpmcpvpapi
+package jpmcpvpgo
 
 import (
 	"bytes"
@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-var BaseURL string = "https://minecraft.jp/oauth/token"
+var TokenURL string = "https://minecraft.jp/oauth/token"
 
 type TokenRequest struct {
 	GrantType    string `json:"grant_type"`
@@ -16,10 +16,10 @@ type TokenRequest struct {
 }
 
 type ClientCredentials struct {
-	AccessToken string `json:"access_token"`
-	ExpiresIn   string `json:"expires_in"`
-	TokenType   string `json:"token_type"`
-	Scope       string `json:"scope"`
+	AccessToken string      `json:"access_token"`
+	ExpiresIn   int         `json:"expires_in"`
+	TokenType   string      `json:"token_type"`
+	Scope       interface{} `json:"scope"`
 }
 
 func GetAccessToken(client_id string, client_secret string) (client *ClientCredentials, err error) {
@@ -30,7 +30,7 @@ func GetAccessToken(client_id string, client_secret string) (client *ClientCrede
 		return nil, err
 	}
 
-	resp, err := http.Post(BaseURL, "application/json", bytes.NewBuffer(b))
+	resp, err := http.Post(TokenURL, "application/json", bytes.NewBuffer(b))
 
 	if err != nil {
 		return nil, err
