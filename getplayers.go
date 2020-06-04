@@ -7,33 +7,28 @@ import (
 	"time"
 )
 
-type PlayersOptions struct {
-	Id     string
-	Fields string
-}
-
 type Players struct {
-	ID              string    `json:"id"`
-	Name            string    `json:"name"`
-	UUID            string    `json:"uuid"`
-	LastLogin       time.Time `json:"last_login"`
-	LastLoginServer string    `json:"last_login_server"`
-	LastLogout      time.Time `json:"last_logout"`
-	Banned          bool      `json:"banned"`
-	Bowspleef       Bowspleef `json:"bowspleef"`
-	CP              CP        `json:"cp"`
-	CTW             CTW       `json:"ctw"`
-	Factions        Factions  `json:"factions"`
-	Kills           []Stats   `json:"kills"`
-	Deaths          []Stats   `json:"deaths"`
-	Objective       Objective `json:"objective"`
-	Matches         []Matches `json:"matches"`
-	Paintball       Paintball `json:"paintball"`
-	Splatt          Splatt    `json:"splatt"`
-	Teampvp         Teampvp   `json:"teampvp"`
-	Tntrun          Tntrun    `json:"tntrun"`
-	Total           Total     `json:"total"`
-	PermalinkURL    string    `json:"permalink_url"`
+	ID              string           `json:"id"`
+	Name            string           `json:"name"`
+	UUID            string           `json:"uuid"`
+	LastLogin       time.Time        `json:"last_login"`
+	LastLoginServer string           `json:"last_login_server"`
+	LastLogout      time.Time        `json:"last_logout"`
+	Banned          bool             `json:"banned"`
+	Bowspleef       Bowspleef        `json:"bowspleef"`
+	CP              CP               `json:"cp"`
+	CTW             CTW              `json:"ctw"`
+	Factions        Factions         `json:"factions"`
+	Kills           []Stats          `json:"kills"`
+	Deaths          []Stats          `json:"deaths"`
+	Objective       Objective        `json:"objective"`
+	PlayersMatches  []PlayersMatches `json:"matches"`
+	Paintball       Paintball        `json:"paintball"`
+	Splatt          Splatt           `json:"splatt"`
+	Teampvp         Teampvp          `json:"teampvp"`
+	Tntrun          Tntrun           `json:"tntrun"`
+	Total           Total            `json:"total"`
+	PermalinkURL    string           `json:"permalink_url"`
 }
 
 type Bowspleef struct {
@@ -187,7 +182,7 @@ type Destroys struct {
 	Time      time.Time `json:"time"`
 }
 
-type Matches struct {
+type PlayersMatches struct {
 	DeathCount              int       `json:"death_count"`
 	EnvdeathCount           int       `json:"envdeath_count"`
 	Finished                time.Time `json:"finished"`
@@ -264,6 +259,11 @@ type Tntrun struct {
 	PlayCount  int `json:"play_count"`
 	TimePlayed int `json:"time_played"`
 	WinCount   int `json:"win_count"`
+}
+
+type PlayersOptions struct {
+	Id     string
+	Fields string
 }
 
 func (session Session) GetPlayers(options PlayersOptions) (*Players, error) {
