@@ -49,6 +49,6 @@ func SetAccessToken(client_id string, client_secret string) (err error) {
 	return err
 }
 
-func GetAccessToken() (client *ClientCredentials) {
+func GetClientCredentials() (client *ClientCredentials) {
 	return client
 }
