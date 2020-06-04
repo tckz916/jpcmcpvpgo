@@ -43,11 +43,13 @@ func SetAccessToken(client_id string, client_secret string) (err error) {
 		return err
 	}
 
+	client = &ClientCredentials{}
+
 	err = json.Unmarshal(body, &client)
 
 	return err
 }
 
-func GetClientCredentials() (client *ClientCredentials) {
+func GetClientCredentials() *ClientCredentials {
 	return client
 }
