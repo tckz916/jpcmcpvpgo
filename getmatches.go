@@ -6,7 +6,9 @@ import (
 	"time"
 )
 
-type Matches []struct {
+type Matches []MatchesData
+
+type MatchesData struct {
 	ID           string       `json:"id"`
 	Map          string       `json:"map"`
 	Server       string       `json:"server"`
@@ -20,7 +22,7 @@ type Matches []struct {
 	Finished     time.Time    `json:"finished"`
 	Teams        []Teams      `json:"teams"`
 	PermalinkURL string       `json:"permalink_url"`
-	Objectives   []Objectives `json:"objectives,omitempty"`
+	Objectives   []Objectives `json:"objectives"`
 }
 type MatchesPlayers struct {
 	UUID       string `json:"uuid"`
