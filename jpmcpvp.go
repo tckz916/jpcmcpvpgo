@@ -15,8 +15,8 @@ type Session struct {
 	token  string
 }
 
-func New() *Session {
-	session := &Session{&http.Client{}, GetClientCredentials().AccessToken}
+func New(token string) *Session {
+	session := &Session{&http.Client{}, token}
 	return session
 }
 

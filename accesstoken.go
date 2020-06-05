@@ -22,34 +22,28 @@ type ClientCredentials struct {
 	Scope       interface{} `json:"scope"`
 }
 
-var client *ClientCredentials
-
-func SetAccessToken(client_id string, client_secret string) (err error) {
+func GetAccessToken(client_id string, client_secret string) (client *ClientCredentials, err error) {
 	tokenRequest := TokenRequest{"client_credentials", client_id, client_secret}
 	b, err := json.Marshal(tokenRequest)
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	resp, err := http.Post(tokenURL, "application/json", bytes.NewBuffer(b))
 
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	client = &ClientCredentials{}
 
 	err = json.Unmarshal(body, &client)
 
-	return err
-}
-
-func GetClientCredentials() *ClientCredentials {
-	return client
+	return client, err
 }
