@@ -6,7 +6,9 @@ import (
 	"time"
 )
 
-type Matches []struct {
+type Matches []Match
+
+type Match struct {
 	ID           string       `json:"id"`
 	Map          string       `json:"map"`
 	Server       string       `json:"server"`

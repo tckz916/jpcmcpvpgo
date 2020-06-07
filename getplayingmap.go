@@ -5,7 +5,9 @@ import (
 	"net/url"
 )
 
-type PlayingMaps []struct {
+type PlayingMaps []PlayingMap
+
+type PlayingMap struct {
 	ID           string              `json:"id"`
 	Name         string              `json:"name"`
 	Version      string              `json:"version"`
