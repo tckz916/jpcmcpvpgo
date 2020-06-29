@@ -8,51 +8,51 @@ import (
 type PlayingMaps []PlayingMap
 
 type PlayingMap struct {
-	ID           string              `json:"id"`
-	Name         string              `json:"name"`
-	Version      string              `json:"version"`
-	Proto        string              `json:"proto"`
-	Authors      []PlayingMapAuthors `json:"authors"`
-	Objective    string              `json:"objective"`
-	Teams        []Teams             `json:"teams"`
-	Gamemodes    []string            `json:"gamemodes"`
-	Type         string              `json:"type"`
-	Rotations    []string            `json:"rotations"`
-	Path         string              `json:"path"`
-	HasImage     bool                `json:"has_image"`
-	Rates        []PlayingMapRates   `json:"rates"`
-	Servers      []PlayingMapServers `json:"servers"`
-	PermalinkURL string              `json:"permalink_url"`
+	ID           *string              `json:"id,omitempty"`
+	Name         *string              `json:"name,omitempty"`
+	Version      *string              `json:"version,omitempty"`
+	Proto        *string              `json:"proto,omitempty"`
+	Authors      *[]PlayingMapAuthors `json:"authors,omitempty"`
+	Objective    *string              `json:"objective,omitempty"`
+	Teams        *[]Teams             `json:"teams,omitempty"`
+	Gamemodes    *[]string            `json:"gamemodes,omitempty"`
+	Type         *string              `json:"type,omitempty"`
+	Rotations    *[]string            `json:"rotations,omitempty"`
+	Path         *string              `json:"path,omitempty"`
+	HasImage     *bool                `json:"has_image,omitempty"`
+	Rates        *[]PlayingMapRates   `json:"rates,omitempty"`
+	Servers      *[]PlayingMapServers `json:"servers,omitempty"`
+	PermalinkURL *string              `json:"permalink_url,omitempty"`
 }
 type PlayingMapAuthors struct {
-	Name         string `json:"name"`
-	UUID         string `json:"uuid"`
-	Contribution string `json:"contribution"`
+	Name         *string `json:"name,omitempty"`
+	UUID         *string `json:"uuid,omitempty"`
+	Contribution *string `json:"contribution,omitempty"`
 }
 type PlayingMapTeams struct {
-	Name  string `json:"name"`
-	Max   int    `json:"max"`
-	Color string `json:"color"`
+	Name  *string `json:"name,omitempty"`
+	Max   *int    `json:"max,omitempty"`
+	Color *string `json:"color,omitempty"`
 }
 type PlayingMapRate struct {
-	Num1 int `json:"1"`
-	Num2 int `json:"2"`
-	Num3 int `json:"3"`
-	Num4 int `json:"4"`
-	Num5 int `json:"5"`
+	Num1 *int `json:"1,omitempty"`
+	Num2 *int `json:"2,omitempty"`
+	Num3 *int `json:"3,omitempty"`
+	Num4 *int `json:"4,omitempty"`
+	Num5 *int `json:"5,omitempty"`
 }
 type PlayingMapRates struct {
-	Version string         `json:"version"`
-	Total   int            `json:"total"`
-	Rate    float64        `json:"rate"`
-	Rates   PlayingMapRate `json:"rates"`
+	Version *string         `json:"version,omitempty"`
+	Total   *int            `json:"total,omitempty"`
+	Rate    *float64        `json:"rate,omitempty"`
+	Rates   *PlayingMapRate `json:"rates,omitempty"`
 }
 type PlayingMapServers struct {
-	ID         string `json:"id"`
-	Name       string `json:"name"`
-	Region     string `json:"region"`
-	CurrentMap string `json:"current_map"`
-	NextMap    string `json:"next_map"`
+	ID         *string `json:"id,omitempty"`
+	Name       *string `json:"name,omitempty"`
+	Region     *string `json:"region,omitempty"`
+	CurrentMap *string `json:"current_map,omitempty"`
+	NextMap    *string `json:"next_map,omitempty"`
 }
 
 func (session Session) GetPlayingMaps() (*PlayingMaps, error) {

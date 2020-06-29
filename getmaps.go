@@ -8,57 +8,57 @@ import (
 type Maps []Map
 
 type Map struct {
-	ID           string       `json:"id"`
-	Name         string       `json:"name"`
-	Version      string       `json:"version"`
-	Proto        string       `json:"proto"`
-	Authors      []MapAuthors `json:"authors"`
-	Objective    string       `json:"objective"`
-	Teams        []MapTeams   `json:"teams"`
-	Gamemodes    []string     `json:"gamemodes"`
-	Type         string       `json:"type"`
-	Rotations    []string     `json:"rotations"`
-	Path         string       `json:"path"`
-	HasImage     bool         `json:"has_image"`
-	Rates        []MapRates   `json:"rates"`
-	PermalinkURL string       `json:"permalink_url"`
+	ID           *string       `json:"id,omitempty"`
+	Name         *string       `json:"name,omitempty"`
+	Version      *string       `json:"version,omitempty"`
+	Proto        *string       `json:"proto,omitempty"`
+	Authors      *[]MapAuthors `json:"authors,omitempty"`
+	Objective    *string       `json:"objective,omitempty"`
+	Teams        *[]MapTeams   `json:"teams,omitempty"`
+	Gamemodes    *[]string     `json:"gamemodes,omitempty"`
+	Type         *string       `json:"type,omitempty"`
+	Rotations    *[]string     `json:"rotations,omitempty"`
+	Path         *string       `json:"path,omitempty"`
+	HasImage     *bool         `json:"has_image,omitempty"`
+	Rates        *[]MapRates   `json:"rates,omitempty"`
+	PermalinkURL *string       `json:"permalink_url,omitempty"`
 }
 type MapAuthors struct {
-	Name         string `json:"name"`
-	UUID         string `json:"uuid"`
-	Contribution string `json:"contribution"`
+	Name         *string `json:"name,omitempty"`
+	UUID         *string `json:"uuid,omitempty"`
+	Contribution *string `json:"contribution,omitempty"`
 }
 type MapTeams struct {
-	Name  string `json:"name"`
-	Max   int    `json:"max"`
-	Color string `json:"color"`
+	Name  *string `json:"name,omitempty"`
+	Max   *int    `json:"max,omitempty"`
+	Color *string `json:"color,omitempty"`
 }
 type MapRate struct {
-	Num1 int `json:"1"`
-	Num2 int `json:"2"`
-	Num3 int `json:"3"`
-	Num4 int `json:"4"`
-	Num5 int `json:"5"`
+	Num1 *int `json:"1,omitempty"`
+	Num2 *int `json:"2,omitempty"`
+	Num3 *int `json:"3,omitempty"`
+	Num4 *int `json:"4,omitempty"`
+	Num5 *int `json:"5,omitempty"`
 }
 type MapRates struct {
-	Version string  `json:"version"`
-	Total   int     `json:"total"`
-	Rate    float64 `json:"rate"`
-	Rates   MapRate `json:"rates"`
+	Version *string  `json:"version,omitempty"`
+	Total   *int     `json:"total,omitempty"`
+	Rate    *float64 `json:"rate,omitempty"`
+	Rates   *MapRate `json:"rates,omitempty"`
 }
 
 type MapsOptions struct {
-	Max_Id string
-	Limit  string
+	Max_Id *string
+	Limit  *string
 }
 
 func (session Session) GetMaps(options MapsOptions) (*Maps, error) {
 	values := url.Values{}
-	if options.Max_Id != "" {
-		values.Add("max_id", options.Max_Id)
+	if options.Max_Id != nil {
+		values.Add("max_id", *options.Max_Id)
 	}
-	if options.Limit != "" {
-		values.Add("limit", options.Limit)
+	if options.Limit != nil {
+		values.Add("limit", *options.Limit)
 	}
 
 	body, err := session.request("maps", values)
