@@ -8,43 +8,45 @@ import (
 type Maps []Map
 
 type Map struct {
-	ID           *string       `json:"id,omitempty"`
-	Name         *string       `json:"name,omitempty"`
-	Version      *string       `json:"version,omitempty"`
-	Proto        *string       `json:"proto,omitempty"`
-	Authors      *[]MapAuthors `json:"authors,omitempty"`
-	Objective    *string       `json:"objective,omitempty"`
-	Teams        *[]MapTeams   `json:"teams,omitempty"`
-	Gamemodes    *[]string     `json:"gamemodes,omitempty"`
-	Type         *string       `json:"type,omitempty"`
-	Rotations    *[]string     `json:"rotations,omitempty"`
-	Path         *string       `json:"path,omitempty"`
-	HasImage     *bool         `json:"has_image,omitempty"`
-	Rates        *[]MapRates   `json:"rates,omitempty"`
-	PermalinkURL *string       `json:"permalink_url,omitempty"`
+	ID           *string           `json:"id,omitempty"`
+	Name         *string           `json:"name,omitempty"`
+	Version      *string           `json:"version,omitempty"`
+	Proto        *string           `json:"proto,omitempty"`
+	Authors      *[]MapContributor `json:"authors,omitempty"`
+	Contributors *[]MapContributor `json:"contributors,omitempty"`
+	Objective    *string           `json:"objective,omitempty"`
+	Teams        *[]MapTeam        `json:"teams,omitempty"`
+	GameModes    *[]string         `json:"gamemodes,omitempty"`
+	Type         *string           `json:"type,omitempty"`
+	Rotations    *[]string         `json:"rotations,omitempty"`
+	Path         *string           `json:"path,omitempty"`
+	HasImage     *bool             `json:"has_image,omitempty"`
+	Rates        *[]MapRate        `json:"rates,omitempty"`
+	PermalinkURL *string           `json:"permalink_url,omitempty"`
 }
-type MapAuthors struct {
+type MapContributor struct {
 	Name         *string `json:"name,omitempty"`
 	UUID         *string `json:"uuid,omitempty"`
 	Contribution *string `json:"contribution,omitempty"`
 }
-type MapTeams struct {
+
+type MapTeam struct {
 	Name  *string `json:"name,omitempty"`
 	Max   *int    `json:"max,omitempty"`
 	Color *string `json:"color,omitempty"`
 }
-type MapRate struct {
+type Rates struct {
 	Num1 *int `json:"1,omitempty"`
 	Num2 *int `json:"2,omitempty"`
 	Num3 *int `json:"3,omitempty"`
 	Num4 *int `json:"4,omitempty"`
 	Num5 *int `json:"5,omitempty"`
 }
-type MapRates struct {
+type MapRate struct {
 	Version *string  `json:"version,omitempty"`
 	Total   *int     `json:"total,omitempty"`
 	Rate    *float64 `json:"rate,omitempty"`
-	Rates   *MapRate `json:"rates,omitempty"`
+	Rates   *Rates   `json:"rates,omitempty"`
 }
 
 type MapsOptions struct {

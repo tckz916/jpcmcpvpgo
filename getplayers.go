@@ -15,7 +15,7 @@ type Players struct {
 	LastLoginServer *string           `json:"last_login_server,omitempty"`
 	LastLogout      *time.Time        `json:"last_logout,omitempty"`
 	Banned          *bool             `json:"banned,omitempty"`
-	Bowspleef       *Bowspleef        `json:"bowspleef,omitempty"`
+	BowSpleef       *BowSpleef        `json:"bowspleef,omitempty"`
 	CP              *CP               `json:"cp,omitempty"`
 	CTW             *CTW              `json:"ctw,omitempty"`
 	Factions        *Factions         `json:"factions,omitempty"`
@@ -25,13 +25,13 @@ type Players struct {
 	PlayersMatches  *[]PlayersMatches `json:"matches,omitempty"`
 	Paintball       *Paintball        `json:"paintball,omitempty"`
 	Splatt          *Splatt           `json:"splatt,omitempty"`
-	Teampvp         *Teampvp          `json:"teampvp,omitempty"`
-	Tntrun          *Tntrun           `json:"tntrun,omitempty"`
+	TeamPvP         *TeamPvP          `json:"teampvp,omitempty"`
+	TNTRun          *TNTRun           `json:"tntrun,omitempty"`
 	Total           *Total            `json:"total,omitempty"`
 	PermalinkURL    *string           `json:"permalink_url,omitempty"`
 }
 
-type Bowspleef struct {
+type BowSpleef struct {
 	LoseCount  *int `json:"lose_count,omitempty"`
 	PlayCount  *int `json:"play_count,omitempty"`
 	TimePlayed *int `json:"time_played,omitempty"`
@@ -193,7 +193,7 @@ type Splatt struct {
 	WinCount   *int `json:"win_count,omitempty"`
 }
 
-type Teampvp struct {
+type TeamPvP struct {
 	DeathCount             *int     `json:"death_count,omitempty"`
 	EnvdeathCount          *int     `json:"envdeath_count,omitempty"`
 	KdRatio                *float64 `json:"kd_ratio,omitempty"`
@@ -226,7 +226,7 @@ type Total struct {
 	WinCount        *int `json:"win_count,omitempty"`
 }
 
-type Tntrun struct {
+type TNTRun struct {
 	LoseCount  *int `json:"lose_count,omitempty"`
 	PlayCount  *int `json:"play_count,omitempty"`
 	TimePlayed *int `json:"time_played,omitempty"`

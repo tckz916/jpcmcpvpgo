@@ -14,7 +14,7 @@ type PlayingMap struct {
 	Proto        *string              `json:"proto,omitempty"`
 	Authors      *[]PlayingMapAuthors `json:"authors,omitempty"`
 	Objective    *string              `json:"objective,omitempty"`
-	Teams        *[]Teams             `json:"teams,omitempty"`
+	Teams        *[]PlayingMapTeams   `json:"teams,omitempty"`
 	Gamemodes    *[]string            `json:"gamemodes,omitempty"`
 	Type         *string              `json:"type,omitempty"`
 	Rotations    *[]string            `json:"rotations,omitempty"`
